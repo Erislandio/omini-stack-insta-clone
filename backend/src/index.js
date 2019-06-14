@@ -1,10 +1,22 @@
-const mongoose = require("./database/index");
 const routes = require("./routes");
 const express = require("express");
 const path = require("path");
-const app = express();
 const chalk = require("chalk");
 const PORT = 3333;
+const CORS = require("cors");
+
+const app = express();
+
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
+
+app.use((req, res, next) => {
+  req.io = io;
+
+  next();
+});
+
+app.use(CORS());
 
 app.use(
   "/files",
@@ -12,6 +24,6 @@ app.use(
 );
 app.use(routes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(chalk.bgCyan(`Server rodando na porta ${chalk.magenta(PORT)}`));
 });
