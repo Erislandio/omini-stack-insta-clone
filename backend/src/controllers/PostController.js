@@ -14,6 +14,7 @@ module.exports = {
     const { author, description, hashtags, place } = req.body;
     const { filename: image } = req.file;
 
+
     const [name] = image.split(".");
     const fileName = `${name}.jpg`;
 
