@@ -1,12 +1,20 @@
 import React from 'react'
 import './header.css'
+import logo from '../../assets/logo.svg'
+import camera from '../../assets/camera.svg'
+import { Link } from "react-router-dom";
+
 
 export default function Header() {
     return (
         <header id="main-header">
             <div className="header-content">
-                <img src="" alt="logo" />
-                <img src="" title="Enviar publicação" alt="Enviar publicação" />
+                <Link to="/">
+                    <img src={logo} alt="logo" />
+                </Link>
+                <Link to="/new">
+                    <img src={camera} title="Enviar publicação" alt="Enviar publicação" />
+                </Link>
             </div>
         </header>
     )
