@@ -35,10 +35,9 @@ class Feed extends Component {
 
         return (
             <section id="post-list">
-
                 {
-                    feed.map(post => (
-                        <article>
+                    feed.map((post, index) => (
+                        <article key={index}>
                             <header>
                                 <div className="user-info">
                                     <span>{post.author}</span>
@@ -48,12 +47,12 @@ class Feed extends Component {
                                 </div>
                                 <img src={more} alt="Mais" />
                             </header>
-                            <img src={`http://localhost:3333/files/${post.image}`} />
+                            <img src={`http://localhost:3333/files/${post.image}`} alt={post.author} />
                             <footer>
                                 <div className="actions">
-                                    <img src={like} />
-                                    <img src={comment} />
-                                    <img src={send} />
+                                    <img src={like} alt="like" />
+                                    <img src={comment} alt="comment" />
+                                    <img src={send} alt="send" />
                                 </div>
                                 <strong>{post.likes}</strong>
                                 <p>
@@ -64,7 +63,6 @@ class Feed extends Component {
                         </article>
                     ))
                 }
-
             </section>
         );
     }
